@@ -49,6 +49,9 @@ if (devEnvironments.Contains(app.Environment.EnvironmentName))
     app.UseSwaggerUI();
 }
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
