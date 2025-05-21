@@ -1,25 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <!-- Circular background -->
-  <circle cx="250" cy="250" r="250" fill="#2E003E"/>
-
-  <!-- Cartoonish rabbit face centered -->
-  <g transform="translate(250,250) scale(5)">
-    <!-- Lowered ears -->
-    <path d="M-22,-15 Q-30,-35 -12,-25" fill="none" stroke="#D8B9FF" stroke-width="3"/>
-    <path d="M22,-15 Q30,-35 12,-25" fill="none" stroke="#D8B9FF" stroke-width="3"/>
-    
-    <!-- Head -->
-    <ellipse cx="0" cy="0" rx="25" ry="20" fill="none" stroke="#D8B9FF" stroke-width="3"/>
-    
-    <!-- Eyes -->
-    <circle cx="-7" cy="-5" r="3" fill="#D8B9FF"/>
-    <circle cx="7" cy="-5" r="3" fill="#D8B9FF"/>
-
-    <!-- Nose -->
-    <path d="M-3,5 Q0,2 3,5" stroke="#D8B9FF" stroke-width="2" fill="none"/>
-
-    <!-- Whiskers -->
-    <path d="M-10,5 H-20 M-10,8 H-22" stroke="#D8B9FF" stroke-width="1.5"/>
-    <path d="M10,5 H20 M10,8 H22" stroke="#D8B9FF" stroke-width="1.5"/>
-  </g>
+<svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="black"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M16 3C9.92487 3 5 7.92487 5 14C5 17.2522 6.67024 19.3263 8.33691 20.5631C10.0036 21.7999 11.6667 22.3333 11.6667 22.3333L10.5 26.5L13.1667 27.6667L16 24.8333L18.8333 27.6667L21.5 26.5L20.3333 22.3333C20.3333 22.3333 21.9964 21.7999 23.6631 20.5631C25.3298 19.3263 27 17.2522 27 14C27 7.92487 22.0751 3 16 3Z"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    />
+    <path
+        d="M11.5 15C10.6716 15 10 14.3284 10 13.5C10 12.6716 10.6716 12 11.5 12C12.3284 12 13 12.6716 13 13.5C13 14.3284 12.3284 15 11.5 15Z"
+        fill="white"
+    />
+    <path
+        d="M20.5 15C19.6716 15 19 14.3284 19 13.5C19 12.6716 19.6716 12 20.5 12C21.3284 12 22 12.6716 22 13.5C22 14.3284 21.3284 15 20.5 15Z"
+        fill="white"
+    />
+    <path
+        d="M16 19C14.8954 19 14 18.5523 14 18C14 17.4477 14.8954 17 16 17C17.1046 17 18 17.4477 18 18C18 18.5523 17.1046 19 16 19Z"
+        fill="white"
+    />
+    <path
+        d="M13 16.5C13 16.5 14 18 16 18C18 18 19 16.5 19 16.5"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+    />
+    <path
+        d="M8.5 11C8.5 11 10 9 11.5 9.5"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+    />
+    <path
+        d="M23.5 11C23.5 11 22 9 20.5 9.5"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+    />
 </svg>
