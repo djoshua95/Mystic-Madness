@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Logos, MobileMenu, ThemeToggle } from "..";
+import { Logos, Home } from "..";
 import { Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
 import styles from "@/css/home/header.module.css";
+
+const { MobileMenu, ThemeToggle } = Home;
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

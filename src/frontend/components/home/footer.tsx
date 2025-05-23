@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Logos } from "..";
+import TwitterLogo from "@/components/logos/twitter-logo";
+import FacebookLogo from "@/components/logos/facebook-logo";
+import InstagramLogo from "@/components/logos/instagram-logo";
 import styles from "@/css/home/footer.module.css";
-
-const { TwitterLogo, FacebookLogo, InstagramLogo } = Logos;
 
 const FOOTER_LINKS = {
   shop: {
