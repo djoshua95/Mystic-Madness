@@ -1,9 +1,9 @@
-import { Home as HomeComponents } from "@/components";
+import { Home } from "@/components";
 
 const { Categories, Features, Hero, Newsletter, Products, PromotionalBanner } =
-  HomeComponents;
+  Home;
 
-export default function Home() {
+export default function MainPage() {
   return (
     <>
       <Hero />

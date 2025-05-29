@@ -8,7 +8,6 @@ const FOOTER_LINKS = {
   shop: {
     title: "Shop",
     links: [
-      { label: "New Arrivals", href: "#" },
       { label: "Women", href: "#" },
       { label: "Men", href: "#" },
       { label: "Accessories", href: "#" },
@@ -20,20 +19,12 @@ const FOOTER_LINKS = {
     links: [
       { label: "Customer Service", href: "#" },
       { label: "My Account", href: "#" },
-      { label: "Find a Store", href: "#" },
-      { label: "Legal & Privacy", href: "#" },
       { label: "Contact", href: "#" },
     ],
   },
   about: {
     title: "About",
-    links: [
-      { label: "About Us", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Sustainability", href: "#" },
-      { label: "Press", href: "#" },
-      { label: "Affiliates", href: "#" },
-    ],
+    links: [{ label: "About Us", href: "/about" }],
   },
 };
 
