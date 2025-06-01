@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
 
-namespace MysticMadness.WebService.Swagger;
+namespace MysticMadness.Api.Swagger;
 
 public static class SwaggerExtensions
 {

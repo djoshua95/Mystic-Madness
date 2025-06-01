@@ -3,7 +3,7 @@ using MysticMadness.Dto.Create;
 using MysticMadness.Service.Generics;
 using MysticMadness.Service.Services;
 
-namespace MysticMadness.WebService.Controllers;
+namespace MysticMadness.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

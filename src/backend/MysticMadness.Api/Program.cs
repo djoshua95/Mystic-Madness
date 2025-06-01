@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MysticMadness.Model;
 using MysticMadness.Service;
 using MysticMadness.Service.Mapping;
-using MysticMadness.WebService.Auth;
-using MysticMadness.WebService.Swagger;
+using MysticMadness.Api.Auth;
+using MysticMadness.Api.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 

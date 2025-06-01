@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace MysticMadness.WebService.Auth;
+namespace MysticMadness.Api.Auth;
 
 public static class AuthExtensions
 {

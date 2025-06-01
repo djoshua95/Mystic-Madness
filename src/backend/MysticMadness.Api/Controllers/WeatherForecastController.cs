@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MysticMadness.WebService.Controllers;
+namespace MysticMadness.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
