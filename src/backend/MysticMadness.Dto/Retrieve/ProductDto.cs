@@ -1,4 +1,4 @@
-namespace MysticMadness.Dto;
+namespace MysticMadness.Dto.Retrieve;
 
 public class ProductDto
 {

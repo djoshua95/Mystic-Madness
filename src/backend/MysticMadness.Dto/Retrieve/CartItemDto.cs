@@ -1,13 +1,13 @@
-namespace MysticMadness.Dto;
+namespace MysticMadness.Dto.Retrieve;
 
-public class OrderItemDto
+public class CartItemDto
 {
     public int Id { get; set; }
     public int Quantity { get; set; }
+    public int UserId { get; set; }
     public int ProductId { get; set; }
-    public int OrderId { get; set; }
 
     // navigation properties
+    public UserDto User { get; set; } = null!;
     public ProductDto Product { get; set; } = null!;
-    public OrderDto Order { get; set; } = null!;
 }

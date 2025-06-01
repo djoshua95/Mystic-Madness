@@ -2,7 +2,7 @@ using MysticMadness.Domain.Repository;
 using MysticMadness.Model;
 using MysticMadness.Model.Entities;
 
-namespace MysticMadness.Domain.UnitOfWorkPattern;
+namespace MysticMadness.Domain.UnitOfWork;
 
 public class UnitOfWork(ApplicationDbContext dbContext) : IUnitOfWork
 {

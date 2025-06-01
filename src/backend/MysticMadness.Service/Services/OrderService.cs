@@ -1,14 +1,14 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MysticMadness.Dto;
+using MysticMadness.Domain.UnitOfWork;
 using MysticMadness.Dto.Filters;
+using MysticMadness.Dto.Retrieve;
 using MysticMadness.Service.AppConstants;
 using MysticMadness.Service.Factories.PagedResult;
 using MysticMadness.Service.Generics;
 using MysticMadness.Service.Utils;
 using MysticMadness.Service.Utils.Logging;
-using MysticMadness.Domain.UnitOfWorkPattern;
 
 namespace MysticMadness.Service.Services;
 

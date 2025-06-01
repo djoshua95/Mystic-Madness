@@ -1,7 +1,7 @@
 using MysticMadness.Domain.Repository;
 using MysticMadness.Model.Entities;
 
-namespace MysticMadness.Domain.UnitOfWorkPattern;
+namespace MysticMadness.Domain.UnitOfWork;
 public interface IUnitOfWork
 {
     IRepositoryBase<Attachment> AttachmentRepository { get; }

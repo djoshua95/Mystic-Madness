@@ -1,6 +1,6 @@
 using MysticMadness.Model.Enums;
 
-namespace MysticMadness.Dto;
+namespace MysticMadness.Dto.Retrieve;
 
 public class OrderDto
 {

@@ -42,4 +42,17 @@ public static class CustomLoggingMessages
             return new() { Template = TEMPLATE, Code = CODE, Exception = Ex, Params = [UserId.ToString(), CODE] };
         }
     }
+
+    public class CIS0001 : ICustomLoggingMessage
+    {
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_SAVE_CART_ITEM;
+        public const string CODE = nameof(CIS0001);
+        public required Exception Ex { get; set; }
+        public required int UserId { get; set; }
+
+        public GenericLoggingError GetError()
+        {
+            return new() { Template = TEMPLATE, Code = CODE, Exception = Ex, Params = [UserId.ToString(), CODE] };
+        }
+    }
 }
