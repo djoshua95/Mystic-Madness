@@ -1,0 +1,9 @@
+.headerImage {
+    display: flex;
+}
+
+.headerImage img {
+    border-radius: 10px;
+    width: 100vw;
+    height: 20vh;
+}
