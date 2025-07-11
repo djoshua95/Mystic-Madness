@@ -1,9 +1,9 @@
-.headerImage {
+.header {
     display: flex;
 }
 
-.headerImage img {
+.header img {
     border-radius: 10px;
-    width: 100vw;
+    width: 100%;
     height: 20vh;
 }

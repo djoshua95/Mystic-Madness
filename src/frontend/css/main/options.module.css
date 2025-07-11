@@ -1,0 +1,14 @@
+.logo {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--color-card-bg);
+    font-size: 50px;
+}
+
+.container {
+    padding: var(--spacing-6);
+}
