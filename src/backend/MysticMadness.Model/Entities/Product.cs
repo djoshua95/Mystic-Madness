@@ -13,7 +13,10 @@ public class Product : IEntity
     public int Stock { get; set; }
     public DateTime CreationDate { get; set; }
     public DateTime LastUpdateDate { get; set; }
+    public bool Status { get; set; }
+    public int? CategoryId { get; set; }
 
     // navigation properties
     public List<Attachment> Attachments { get; set; } = [];
+    public Category? Category { get; set; } = null!;
 }

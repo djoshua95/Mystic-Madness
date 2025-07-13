@@ -49,7 +49,7 @@ if (devEnvironments.Contains(app.Environment.EnvironmentName))
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();

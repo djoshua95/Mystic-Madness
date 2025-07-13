@@ -48,4 +48,10 @@ public class UnitOfWork(ApplicationDbContext dbContext) : IUnitOfWork
     {
         get => _userRepository ??= new RepositoryBase<User>(_dbContext);
     }
+
+    private IRepositoryBase<Category>? _categoryRepository;
+    public IRepositoryBase<Category> CategoryRepository
+    {
+        get => _categoryRepository ??= new RepositoryBase<Category>(_dbContext);
+    }
 }

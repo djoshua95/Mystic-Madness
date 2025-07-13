@@ -4,12 +4,15 @@ using MysticMadness.Domain.UnitOfWork;
 using MysticMadness.Dto.Create;
 using MysticMadness.Dto.Retrieve;
 using MysticMadness.Model.Entities;
-using MysticMadness.Service.AppConstants;
 using MysticMadness.Service.Generics;
-using MysticMadness.Service.Utils;
 using MysticMadness.Service.Utils.Logging;
 
 namespace MysticMadness.Service.Services;
+
+public interface ICartItemService
+{
+    Task<DataResult<CartItemDto>> SaveCartItem(CreateCartItemDto dto);
+}
 
 public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<CartItemService> logger) : ICartItemService
 {
@@ -30,12 +33,10 @@ public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Car
         }
         catch (Exception ex)
         {
-            _logger.CustomLogError(new CustomLoggingMessages.CIS0001 { Ex = ex, UserId = dto.UserId!.Value });
+            ICustomLoggingMessage logError = new CustomLoggingMessages.CIS0001 { Ex = ex, UserId = dto.UserId!.Value };
+            _logger.CustomLogError(logError);
             result.Success = false;
-            result.Message = ErrorMessageBuilder.BuildFromMessageAndCode(
-                Constants.ErrorMessages.ERROR_SAVE_ITEM_FAILED,
-                Constants.ErrorCodes.CIS0001
-            );
+            result.Message = logError.GetClientMessage();
         }
         return result;
     }

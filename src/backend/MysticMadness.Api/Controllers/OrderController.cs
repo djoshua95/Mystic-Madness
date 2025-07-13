@@ -24,7 +24,7 @@ public class OrderController(IOrderService orderService) : ControllerBase
     [Authorize]
     public async Task<IActionResult> GetPaged([FromQuery] OrderFilterDto filter)
     {
-        var result = await _orderService.GetPagedOrdersGivenAnUserIdAsync(filter);
+        var result = await _orderService.GetPagedOrders(filter);
         if (result.Success) return Ok(result);
         return BadRequest(result);
     }
