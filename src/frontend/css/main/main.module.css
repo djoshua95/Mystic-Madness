@@ -1,12 +1,9 @@
-.container {
-    padding: var(--spacing-6);
-}
-
 .grid {
     display: grid;
     gap: var(--spacing-4);
     grid-template-columns: 5vw 1fr 5vw;
     height: 100%;
+    padding: var(--spacing-6);
 }
 
 .sideItem {
