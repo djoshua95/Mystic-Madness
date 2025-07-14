@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    padding: var(--spacing-6);
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+}
+
+.categoryBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-secondary);
+    border-radius: 40%;
+    height: 150px;
+    width: 150px;
+    padding: 0 40;
+}
