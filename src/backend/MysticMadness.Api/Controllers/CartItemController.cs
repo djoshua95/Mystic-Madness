@@ -20,8 +20,7 @@ public class CartItemController(ICartItemService cartItemService) : ControllerBa
             return BadRequest(defaultResult);
         }
         var result = await _cartItemService.SaveCartItem(dto);
-        if (result.Success)
-            return Ok(result);
+        if (result.Success) return Ok(result);
         return BadRequest(result);
     }
 }

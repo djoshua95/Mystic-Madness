@@ -85,7 +85,48 @@ public static class CustomLoggingMessages
         public string ClientMessage { get => Constants.ErrorMessages.ERROR_GET_ITEMS_FAILED; }
         public string Code { get => nameof(PROD0002); }
 
-        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_GET_PAGED_PRODUCTS;
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_GET_PRODUCT;
+        public required Exception Ex { get; set; }
+
+        public GenericLoggingError GetError()
+        {
+            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [Code] };
+        }
+    }
+    public class PROD0003 : ICustomLoggingMessage
+    {
+        public string ClientMessage { get => Constants.ErrorMessages.ERROR_SAVE_ITEM_FAILED; }
+        public string Code { get => nameof(PROD0003); }
+
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_SAVE_PRODUCT;
+        public required Exception Ex { get; set; }
+
+        public GenericLoggingError GetError()
+        {
+            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [Code] };
+        }
+    }
+
+    public class PROD0004 : ICustomLoggingMessage
+    {
+        public string ClientMessage { get => Constants.ErrorMessages.ERROR_UPDATE_ITEM_FAILED; }
+        public string Code { get => nameof(PROD0004); }
+
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_UPDATE_PRODUCT;
+        public required Exception Ex { get; set; }
+
+        public GenericLoggingError GetError()
+        {
+            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [Code] };
+        }
+    }
+
+    public class PROD0005 : ICustomLoggingMessage
+    {
+        public string ClientMessage { get => Constants.ErrorMessages.ERROR_DELETE_ITEM_FAILED; }
+        public string Code { get => nameof(PROD0005); }
+
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_DELETE_PRODUCT;
         public required Exception Ex { get; set; }
 
         public GenericLoggingError GetError()

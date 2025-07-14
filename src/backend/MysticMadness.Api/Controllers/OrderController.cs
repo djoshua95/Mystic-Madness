@@ -11,11 +11,11 @@ public class OrderController(IOrderService orderService) : ControllerBase
 {
     private readonly IOrderService _orderService = orderService;
 
-    [HttpGet("{userId:int}")]
+    [HttpGet("{id:int}")]
     [Authorize]
-    public async Task<IActionResult> Get(int userId)
+    public async Task<IActionResult> Get(int id)
     {
-        var result = await _orderService.GetAllOrdersGivenAnUserIdAsync(userId);
+        var result = await _orderService.GetAllOrdersGivenAnUserIdAsync(id);
         if (result.Success) return Ok(result);
         return BadRequest(result);
     }

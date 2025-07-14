@@ -1,6 +1,7 @@
 using AutoMapper;
 using MysticMadness.Dto.Create;
 using MysticMadness.Dto.Retrieve;
+using MysticMadness.Dto.Update;
 using MysticMadness.Model.Entities;
 
 namespace MysticMadness.Service.Mapping;
@@ -14,8 +15,8 @@ public class MappingProfile : Profile
         CreateMap<User, UserDto>().ReverseMap();
         CreateMap<CartItem, CartItemDto>().ReverseMap();
         CreateMap<CartItem, CreateCartItemDto>().ReverseMap();
-        CreateMap<Product, ProductDto>()
-            .ForMember(p => p.Stock, dto => dto.MapFrom(x => x.Stock > 0))
-            .ReverseMap();
+        CreateMap<Product, ProductDto>().ReverseMap();
+        CreateMap<Product, UpdateProductDto>().ReverseMap();
+        CreateMap<Product, CreateProductDto>().ReverseMap();
     }
 }
