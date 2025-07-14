@@ -42,7 +42,7 @@ public class ProductService
         {
             var products = _unitOfWork.ProductRepository
                 .GetFiltered(p =>
-                    (filter.Category == null || (p.Category != null && p.Category.Name == filter.Category))
+                    (filter.Category == null || (p.Category != null && p.Category.Name.ToLower() == filter.Category.ToLower()))
                     && (filter.Status == null || p.Status == filter.Status)
                 )
                 .Include(p => p.Category);

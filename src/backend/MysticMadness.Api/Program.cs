@@ -13,6 +13,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MysticMadnessDB")));
 
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "DefaultCorsPolicy",
+        options =>
+        {
+            string[] origins = builder
+                .Configuration
+                .GetSection("AllowedOrigins")
+                .Get<string[]>() ?? ["*"];
+            options
+                .WithOrigins(origins)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+        });
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -53,6 +71,7 @@ if (devEnvironments.Contains(app.Environment.EnvironmentName))
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors("DefaultCorsPolicy");
 
 app.MapControllers();
 
