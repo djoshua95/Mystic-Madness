@@ -66,6 +66,21 @@ public static class CustomLoggingMessages
         }
     }
 
+    public class CIS0002 : ICustomLoggingMessage
+    {
+        public string ClientMessage { get => Constants.ErrorMessages.ERROR_GET_ITEMS_FAILED; }
+        public string Code { get => nameof(CIS0002); }
+
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_SAVE_CART_ITEM;
+        public required Exception Ex { get; set; }
+        public required int UserId { get; set; }
+
+        public GenericLoggingError GetError()
+        {
+            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [UserId.ToString(), Code] };
+        }
+    }
+
     public class PROD0001 : ICustomLoggingMessage
     {
         public string ClientMessage { get => Constants.ErrorMessages.ERROR_GET_ITEMS_FAILED; }

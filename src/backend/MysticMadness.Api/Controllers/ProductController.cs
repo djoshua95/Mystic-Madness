@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MysticMadness.Dto.Create;
 using MysticMadness.Dto.Update;
 using MysticMadness.Dto.Filters;
+using MysticMadness.Service.AppConstants;
 using MysticMadness.Service.Generics;
 using MysticMadness.Service.Services;
 
@@ -34,7 +35,7 @@ public class ProductController(IProductService productService) : ControllerBase
     {
         if (!ModelState.IsValid)
         {
-            DataResult<object> defaultResult = new() { Success = false, Message = "Invalid dto." };
+            DataResult<object> defaultResult = new() { Success = false, Message = Constants.LoggingMessages.ERROR_INVALID_DTO };
             return BadRequest(defaultResult);
         }
         var result = await _productService.SaveAsync(product);
@@ -47,7 +48,7 @@ public class ProductController(IProductService productService) : ControllerBase
     {
         if (!ModelState.IsValid)
         {
-            DataResult<object> defaultResult = new() { Success = false, Message = "Invalid dto." };
+            DataResult<object> defaultResult = new() { Success = false, Message = Constants.LoggingMessages.ERROR_INVALID_DTO };
             return BadRequest(defaultResult);
         }
         var result = await _productService.UpdateAsync(product);

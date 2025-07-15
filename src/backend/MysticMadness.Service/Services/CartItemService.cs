@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MysticMadness.Domain.UnitOfWork;
 using MysticMadness.Dto.Create;
@@ -11,6 +12,7 @@ namespace MysticMadness.Service.Services;
 
 public interface ICartItemService
 {
+    Task<DataResult<List<CartItemDto>>> GetByUserId(int userId);
     Task<DataResult<CartItemDto>> SaveCartItem(CreateCartItemDto dto);
 }
 
@@ -19,6 +21,29 @@ public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Car
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
     private readonly ILogger<CartItemService> _logger = logger;
+
+    public async Task<DataResult<List<CartItemDto>>> GetByUserId(int userId)
+    {
+        DataResult<List<CartItemDto>> result = new();
+        try
+        {
+            var cartItems = await _unitOfWork
+                .CartItemRepository
+                .GetFiltered(ci => ci.UserId == userId)
+                .ToListAsync();
+            var dtos = _mapper.Map<List<CartItemDto>>(cartItems);
+            result.Data = dtos;
+            result.Success = true;
+        }
+        catch (Exception ex)
+        {
+            ICustomLoggingMessage logError = new CustomLoggingMessages.CIS0002 { Ex = ex, UserId = userId };
+            _logger.CustomLogError(logError);
+            result.Success = false;
+            result.Message = logError.GetClientMessage();
+        }
+        return result;
+    }
 
     public async Task<DataResult<CartItemDto>> SaveCartItem(CreateCartItemDto dto)
     {
