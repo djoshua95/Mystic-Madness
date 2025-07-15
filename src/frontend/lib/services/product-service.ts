@@ -16,7 +16,7 @@ export async function getPagedProducts(filter: {
     const request = await fetch(fullUrl);
 
     if (!request.ok) {
-      console.log("Request failed;");
+      console.error("Request failed;");
       return products;
     }
 

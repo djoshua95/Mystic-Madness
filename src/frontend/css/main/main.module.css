@@ -7,5 +7,14 @@
 }
 
 .sideItem {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-4);
+}
+
+.sideItem button {
+    height: fit-content;
+    color: var(--color-primary);
+    background: none;
+    border: none;
 }

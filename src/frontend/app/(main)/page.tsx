@@ -1,22 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
 import Products from "@/components/home/products";
+import { CartModal } from "@/components/home/cart-modal";
 import { createPageURL } from "@/lib/utils";
-import { MenuIcon, ShoppingCartIcon } from "lucide-react";
+import { auth0 } from "@/lib/auth0";
+import {
+  MenuIcon,
+  ShoppingCartIcon,
+  LogOutIcon,
+  LogInIcon,
+} from "lucide-react";
 import styles from "@/css/main/main.module.css";
 import headerStyles from "@/css/main/header.module.css";
 import optionsStyles from "@/css/main/options.module.css";
 import categoriesStyles from "@/css/main/categories.module.css";
 import footerStyles from "@/css/main/footer.module.css";
 
+const sideItemOptions = {
+  loggedOut: {
+    url: "/auth/login",
+    icon: LogInIcon,
+  },
+  loggedIn: {
+    url: createPageURL("/auth/logout", {
+      returnTo: process.env.AUTH0_POST_LOGOUT_REDIRECT,
+    }),
+    icon: LogOutIcon,
+  },
+};
+
 export default async function MainPage(props: {
-  searchParams: Promise<{ category: string }>;
+  searchParams: Promise<{ category?: string; showCart?: boolean }>;
 }) {
   const params = await props.searchParams;
+  const { user } = (await auth0.getSession()) ?? {};
+  const sideItem = user ? sideItemOptions.loggedIn : sideItemOptions.loggedOut;
+
   return (
     <div className={styles.grid}>
       <div className={styles.sideItem}>
-        <MenuIcon />
+        <button>
+          <MenuIcon />
+        </button>
       </div>
       <div>
         <header>
@@ -26,8 +51,8 @@ export default async function MainPage(props: {
               alt="header-image"
               width={857}
               height={263}
-              priority
               quality={100}
+              priority
             />
           </div>
         </header>
@@ -70,8 +95,15 @@ export default async function MainPage(props: {
         </footer>
       </div>
       <div className={styles.sideItem}>
-        <ShoppingCartIcon />
+        <Link href={createPageURL("/", { ...params, showCart: "true" })}>
+          <ShoppingCartIcon />
+        </Link>
+
+        <Link href={sideItem.url}>
+          <sideItem.icon />
+        </Link>
       </div>
+      {params.showCart && <CartModal category={params.category} />}
     </div>
   );
 }

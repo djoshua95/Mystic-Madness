@@ -3,7 +3,9 @@ import { type Product } from "@/lib/definitions";
 import { getPagedProducts } from "@/lib/services/product-service";
 import productsStyles from "@/css/main/products.module.css";
 
-export default async function Products(props: { category: string }) {
+export default async function Products(props: { category?: string }) {
+  if (props.category == null) return null;
+
   const products = await getPagedProducts({
     category: props.category,
     pageNumber: "1",
