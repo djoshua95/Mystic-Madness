@@ -7,4 +7,8 @@ public class ProductDto
     public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public int Stock { get; set; }
+
+    // navigation properties
+    public List<AttachmentDto> Attachments { get; set; } = [];
+    public CategoryDto? Category { get; set; } = null!;
 }
