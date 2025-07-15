@@ -14,9 +14,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-secondary);
     border-radius: 40%;
     height: 150px;
     width: 150px;
     padding: 0 40;
+    background-color: var(--color-gray-100);
+    color: var(--color-text);
+    border: none;
+}
+
+.categoryBox:hover {
+    background-color: var(--color-feature-icon-bg);
+    transition: var(--transition-theme);
+}
+
+.categoryBox:active {
+    transform: translateY(-2px);
+}
+
+.categoryBox:focus {
+    background-color: var(--color-feature-icon-bg);
 }

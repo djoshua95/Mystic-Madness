@@ -9,13 +9,21 @@ export type DataResult<T> = {
   success: boolean;
 };
 
+export type Attachment = {
+  id: number;
+  link: string;
+  description: string;
+  type: string;
+  format: string;
+};
+
 export type Product = {
-  imageUrl: string;
-  imageAlt: string;
+  attachments: Attachment[];
   id: number;
   name: string;
   price: string;
   stock: number;
   model: string;
+  categoryId: number;
   category: { id: number; name: string };
 };

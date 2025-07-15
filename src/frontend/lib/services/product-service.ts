@@ -23,21 +23,12 @@ export async function getPagedProducts(filter: {
     response = await request.json();
 
     if (response == null || response.success === false) {
-      console.log("pailas");
       return products;
     }
 
-    products =
-      response?.data?.items?.map(
-        (p: any) =>
-          ({
-            imageUrl: "https://picsum.photos/200/200",
-            imageAlt: "example",
-            ...p,
-          }) as Product,
-      ) ?? null;
+    products = response?.data?.items ?? null;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
   return products;
 }

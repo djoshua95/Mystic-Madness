@@ -45,7 +45,8 @@ public class ProductService
                     (filter.Category == null || (p.Category != null && p.Category.Name.ToLower() == filter.Category.ToLower()))
                     && (filter.Status == null || p.Status == filter.Status)
                 )
-                .Include(p => p.Category);
+                .Include(p => p.Category)
+                .Include(p => p.Attachments);
 
             var pagedDtos = await _pagedResultFactory
                 .Create(products, filter.PageSize, filter.PageNumber)
