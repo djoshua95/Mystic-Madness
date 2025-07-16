@@ -18,6 +18,7 @@ public static class AuthExtensions
             {
                 ValidIssuer = configuration["Auth0:Domain"],
                 ValidAudience = configuration["Auth0:Audience"],
+                RoleClaimType = "https://schemas.auth0.com/roles",
                 ValidateLifetime = true
             };
         });

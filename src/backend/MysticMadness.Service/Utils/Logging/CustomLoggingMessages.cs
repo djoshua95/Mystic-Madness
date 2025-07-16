@@ -73,11 +73,26 @@ public static class CustomLoggingMessages
 
         public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_SAVE_CART_ITEM;
         public required Exception Ex { get; set; }
-        public required int UserId { get; set; }
+        public required string Sub { get; set; }
 
         public GenericLoggingError GetError()
         {
-            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [UserId.ToString(), Code] };
+            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [Sub, Code] };
+        }
+    }
+
+    public class CIS0003 : ICustomLoggingMessage
+    {
+        public string ClientMessage { get => Constants.ErrorMessages.ERROR_UPDATE_ITEM_FAILED; }
+        public string Code { get => nameof(CIS0003); }
+
+        public const string TEMPLATE = Constants.LoggingMessages.ERROR_FAILED_UPDATE_CART;
+        public required Exception Ex { get; set; }
+        public required string Sub { get; set; }
+
+        public GenericLoggingError GetError()
+        {
+            return new() { Template = TEMPLATE, Code = Code, Exception = Ex, Params = [Sub, Code] };
         }
     }
 

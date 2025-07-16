@@ -11,7 +11,8 @@ public static class Constants
         public const string ERROR_FAILED_GET_ORDERS_FOR_USER = "Failed to retrieve orders for user {UserId}. Error code: {ErrorCode}";
         public const string ERROR_FAILED_GET_PAGED_ORDERS_FOR_USER = "Failed to retrieve orders for user {UserId}. Error code: {ErrorCode}";
         public const string ERROR_FAILED_GET_PAGED_PRODUCTS = "Failed to retrieve products. Error code: {ErrorCode}";
-        public const string ERROR_FAILED_SAVE_CART_ITEM = "Failed to save a cart item for {UserId}. Error code: {Error code}";
+        public const string ERROR_FAILED_SAVE_CART_ITEM = "Failed to save a cart item for {Sub}. Error code: {Error code}";
+        public const string ERROR_FAILED_UPDATE_CART = "Failed to update the cart for {Sub}. Error code: {Error code}";
         public const string ERROR_FAILED_GET_CART_ITEMS = "Failed to retrieve the cart items for {UserId}. Error code: {Error code}";
         public const string ERROR_FAILED_GET_PRODUCT = "Failed to retrieve product. Error code: {ErrorCode}";
         public const string ERROR_FAILED_SAVE_PRODUCT = "Failed to save a product. Error code: {Error code}";
