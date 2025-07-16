@@ -3,6 +3,7 @@ import { auth0 } from "@/lib/auth0";
 
 export default async function UserInfoPage() {
   const { user } = (await auth0.getSession()) ?? {};
+  console.log(user);
   try {
     console.log((await auth0.getAccessToken()).token);
   } catch (err) {

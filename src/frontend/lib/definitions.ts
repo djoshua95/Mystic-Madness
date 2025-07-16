@@ -1,10 +1,12 @@
+export type PagedResult<T> = {
+  items: T;
+  totalItems: number;
+  pageNumber: number;
+  pageSize: number;
+};
+
 export type DataResult<T> = {
-  data?: {
-    items: T[];
-    totalItems: number;
-    pageNumber: number;
-    pageSize: number;
-  };
+  data?: T;
   message: string;
   success: boolean;
 };
@@ -21,9 +23,17 @@ export type Product = {
   attachments: Attachment[];
   id: number;
   name: string;
-  price: string;
+  price: number;
   stock: number;
   model: string;
   categoryId: number;
   category: { id: number; name: string };
+};
+
+export type CartItem = {
+  id: number;
+  quantity: number;
+  userId: number;
+  productId: number;
+  product: Product;
 };

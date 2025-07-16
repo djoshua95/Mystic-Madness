@@ -1,4 +1,4 @@
-import { DataResult, Product } from "@/lib/definitions";
+import { DataResult, PagedResult, Product } from "@/lib/definitions";
 import { constants } from "../constants";
 
 export async function getPagedProducts(filter: {
@@ -8,7 +8,7 @@ export async function getPagedProducts(filter: {
 }) {
   const baseUrl = `${constants.BACKEND_URL}/api/Product/paged`;
   const searchParams = new URLSearchParams(filter);
-  let response: DataResult<Product> | null = null;
+  let response: DataResult<PagedResult<Product[]>> | null = null;
   let products: Product[] | null = null;
 
   try {

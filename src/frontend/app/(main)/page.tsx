@@ -34,7 +34,9 @@ export default async function MainPage(props: {
 }) {
   const params = await props.searchParams;
   const { user } = (await auth0.getSession()) ?? {};
-  const sideItem = user ? sideItemOptions.loggedIn : sideItemOptions.loggedOut;
+  const { token } = (await auth0.getAccessToken()) ?? {};
+  const sideItem =
+    user != null ? sideItemOptions.loggedIn : sideItemOptions.loggedOut;
 
   return (
     <div className={styles.grid}>
@@ -57,9 +59,6 @@ export default async function MainPage(props: {
           </div>
         </header>
         <main>
-          <div className={optionsStyles.container}>
-            <div className={optionsStyles.logo}>M</div>
-          </div>
           <div className={categoriesStyles.container}>
             <div className={categoriesStyles.grid}>
               <Link
@@ -103,7 +102,9 @@ export default async function MainPage(props: {
           <sideItem.icon />
         </Link>
       </div>
-      {params.showCart && <CartModal category={params.category} />}
+      {params.showCart && (
+        <CartModal user={user} token={token} category={params.category} />
+      )}
     </div>
   );
 }
