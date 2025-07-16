@@ -45,7 +45,6 @@ public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Car
         {
             ICustomLoggingMessage logError = new CustomLoggingMessages.CIS0002 { Ex = ex, Sub = sub };
             _logger.CustomLogError(logError);
-            result.Success = false;
             result.Message = logError.GetClientMessage();
         }
         return result;
@@ -66,7 +65,6 @@ public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Car
         {
             ICustomLoggingMessage logError = new CustomLoggingMessages.CIS0001 { Ex = ex, UserId = dto.UserId!.Value };
             _logger.CustomLogError(logError);
-            result.Success = false;
             result.Message = logError.GetClientMessage();
         }
         return result;
@@ -77,25 +75,21 @@ public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Car
         DataResult<List<CartItemDto>> result = new();
         try
         {
-            var mappedCart = _mapper.Map<List<CartItem>>(cart);
             var existingCart = await _unitOfWork
                 .CartItemRepository
                 .GetFiltered(ci => ci.User.Sub == sub)
-                .AsNoTracking()
                 .ToListAsync();
 
-            var toUpdate = mappedCart
-                .IntersectBy(existingCart.Select(ci => ci.Id), c => c.Id);
-            await _unitOfWork.CartItemRepository.UpdateMultipleAsync(toUpdate.Where(ci => ci.Quantity > 0));
+            await _unitOfWork
+                .CartItemRepository
+                .DeleteMultipleAsync(existingCart.Select(ci => ci.Id));
 
-            var toRemove = existingCart
-                .ExceptBy(toUpdate.Select(ci => ci.Id), c => c.Id)
-                .Select(ci => ci.Id)
-                .Concat(toUpdate.Where(ci => ci.Quantity == 0).Select(ci => ci.Id));
-            await _unitOfWork.CartItemRepository.DeleteMultipleAsync(toRemove);
-
-            var toAdd = mappedCart.ExceptBy(toUpdate.Select(ci => ci.Id), c => c.Id);
-            await _unitOfWork.CartItemRepository.SaveMultipleAsync(toAdd.Where(ci => ci.Quantity > 0));
+            var mappedCart = _mapper
+                .Map<List<CartItem>>(cart.Where(ci => ci.Quantity > 0));
+            mappedCart.ForEach(ci => { ci.Id = 0; });
+            await _unitOfWork
+                .CartItemRepository
+                .SaveMultipleAsync(mappedCart);
 
             result.Data = (await GetByUserSub(sub)).Data;
             result.Success = true;
@@ -104,7 +98,6 @@ public class CartItemService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Car
         {
             ICustomLoggingMessage logError = new CustomLoggingMessages.CIS0003 { Ex = ex, Sub = sub };
             _logger.CustomLogError(logError);
-            result.Success = false;
             result.Message = logError.GetClientMessage();
         }
         return result;

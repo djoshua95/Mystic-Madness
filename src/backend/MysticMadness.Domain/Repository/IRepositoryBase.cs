@@ -79,7 +79,7 @@ public interface IRepositoryBase<TEntity>
     /// Deletes multiple entities from the database in a transactional manner.
     /// </summary>
     /// <param name="ids">The collection of unique identifiers for the entities to be deleted.</param>
-    /// <returns>A collection of deleted entities if successful, <c>null</c> otherwise.</returns>
+    /// <returns>The amount of deleted entities if successful, <c>0</c> otherwise.</returns>
     int DeleteMultiple(IEnumerable<int> ids);
 
     /// <summary>
@@ -149,7 +149,7 @@ public interface IRepositoryBase<TEntity>
     /// Asynchronously deletes multiple entities from the database in a transactional manner.
     /// </summary>
     /// <param name="entities">The collection of entities to be deleted.</param>
-    /// <returns>A task representing the asynchronous operation, containing a collection of deleted entities if successful, <c>null</c> otherwise.</returns>
+    /// <returns>A task representing the asynchronous operation, containing the amount of deleted entities if successful, <c>0</c> otherwise.</returns>
     Task<int> DeleteMultipleAsync(IEnumerable<int> ids);
 
     /// <summary>
