@@ -1,16 +1,20 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MysticMadness.Dto;
+using MysticMadness.Domain.UnitOfWork;
 using MysticMadness.Dto.Filters;
-using MysticMadness.Service.AppConstants;
+using MysticMadness.Dto.Retrieve;
 using MysticMadness.Service.Factories.PagedResult;
 using MysticMadness.Service.Generics;
-using MysticMadness.Service.Utils;
 using MysticMadness.Service.Utils.Logging;
-using MysticMadness.Domain.UnitOfWorkPattern;
 
 namespace MysticMadness.Service.Services;
+
+public interface IOrderService
+{
+    Task<DataResult<List<OrderDto>>> GetAllOrdersGivenAnUserIdAsync(int userId);
+    Task<DataResult<PagedResult<OrderDto>>> GetPagedOrders(OrderFilterDto filter);
+}
 
 public class OrderService
 (
@@ -39,18 +43,15 @@ public class OrderService
         }
         catch (Exception ex)
         {
-            _logger.CustomLogError(new CustomLoggingMessages.ORDS0001 { Ex = ex, UserId = userId });
+            ICustomLoggingMessage logMessage = new CustomLoggingMessages.ORDS0001 { Ex = ex, UserId = userId };
+            _logger.CustomLogError(logMessage);
             dataResult.Success = false;
-            dataResult.Message = ErrorMessageBuilder.BuildFromMessageAndCode(
-                Constants.ErrorMessages.ERROR_GET_ITEMS_FAILED,
-                Constants.ErrorCodes.ORDS0001
-            );
+            dataResult.Message = logMessage.GetClientMessage();
         }
         return dataResult;
     }
 
-
-    public async Task<DataResult<PagedResult<OrderDto>>> GetPagedOrdersGivenAnUserIdAsync(OrderFilterDto filter)
+    public async Task<DataResult<PagedResult<OrderDto>>> GetPagedOrders(OrderFilterDto filter)
     {
         DataResult<PagedResult<OrderDto>> dataResult = new() { Success = false };
 
@@ -74,15 +75,12 @@ public class OrderService
         }
         catch (Exception ex)
         {
-            _logger.CustomLogError(new CustomLoggingMessages.ORDS0002 { Ex = ex, UserId = filter.UserId });
-            dataResult.Message = ErrorMessageBuilder.BuildFromMessageAndCode(
-                Constants.ErrorMessages.ERROR_GET_ITEMS_FAILED,
-                Constants.ErrorCodes.ORDS0002
-            );
+            ICustomLoggingMessage logError = new CustomLoggingMessages.ORDS0002 { Ex = ex, UserId = filter.UserId };
+            _logger.CustomLogError(logError);
+            dataResult.Message = logError.GetClientMessage();
         }
 
         return dataResult;
     }
-
 
 }

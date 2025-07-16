@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MysticMadness.Service.Factories.PagedResult;
 using MysticMadness.Service.Services;
 using MysticMadness.Domain.Repository;
-using MysticMadness.Domain.UnitOfWorkPattern;
+using MysticMadness.Domain.UnitOfWork;
 
 namespace MysticMadness.Service;
 
@@ -14,6 +14,8 @@ public static class ServiceExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddTransient<IPagedResultFactory, PagedResultFactory>();
         services.AddTransient<IOrderService, OrderService>();
+        services.AddTransient<ICartItemService, CartItemService>();
+        services.AddTransient<IProductService, ProductService>();
         return services;
     }
 }

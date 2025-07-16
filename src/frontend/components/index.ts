@@ -1,5 +1,5 @@
-import GoogleButton from "./buttons/google-button";
-import TwitterButton from "./buttons/twitter-button";
-import AuthenticationForm from "./authentication-form";
+import MysticMadnessLogo from "./logos/mystic-madness-logo";
 
-export { GoogleButton, TwitterButton, AuthenticationForm };
+export const Logos = {
+  MysticMadnessLogo,
+};

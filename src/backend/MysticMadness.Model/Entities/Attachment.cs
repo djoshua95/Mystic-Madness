@@ -12,5 +12,5 @@ public class Attachment : IEntity
     public AttachmentType Type { get; set; }
     public string Format { get; set; } = string.Empty;
     public DateTime CreationDate { get; set; }
-    public DateTime LastUpdateDate { get; set; }
+    public DateTime? LastUpdateDate { get; set; }
 }

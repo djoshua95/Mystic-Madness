@@ -1,0 +1,6 @@
+@MysticMadness.Api_HostAddress = http://localhost:5084
+
+GET {{MysticMadness.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

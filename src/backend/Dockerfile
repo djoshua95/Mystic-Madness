@@ -3,10 +3,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /app
 COPY . .
-RUN dotnet restore MysticMadness.WebService
+RUN dotnet restore MysticMadness.Api
 
 # copy everything and build
-WORKDIR /app/MysticMadness.WebService
+WORKDIR /app/MysticMadness.Api
 RUN dotnet publish -c Debug -o /out
 
 # install dotnet-ef tool for migrations
@@ -17,4 +17,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 
 WORKDIR /app
 COPY --from=build /out .
-ENTRYPOINT [ "dotnet", "MysticMadness.WebService.dll" ]
+ENTRYPOINT [ "dotnet", "MysticMadness.Api.dll" ]

@@ -1,0 +1,15 @@
+.logo {
+    width: 15vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--color-card-bg);
+    font-size: 10vw;
+}
+
+.container {
+    display: flex;
+    padding: var(--spacing-6);
+}
